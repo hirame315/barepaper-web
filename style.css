@@ -224,7 +224,7 @@ html.js [data-reveal].is-visible {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: 8px;
   margin-top: 44px;
 }
 
@@ -240,7 +240,7 @@ html.js [data-reveal].is-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 54px;
+  height: 72px;
   padding: 0 30px;
   border-radius: 8px;
   background: var(--color-brand);
@@ -279,7 +279,7 @@ html.js [data-reveal].is-visible {
 }
 
 .cta-badge img {
-  height: 54px;
+  height: 72px;
   width: auto;
 }
 
@@ -564,6 +564,50 @@ html.js [data-reveal].is-visible {
   color: var(--color-text-subtle);
 }
 
+.sp-only {
+  display: none;
+}
+
+/* Language switch link */
+
+.lang-switch {
+  padding-left: 16px;
+  border-left: 1px solid var(--color-border);
+}
+
+/* Hamburger */
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 1px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 /* Responsive */
 
 @media (max-width: 900px) {
@@ -592,6 +636,52 @@ html.js [data-reveal].is-visible {
 
   .hero__actions {
     align-items: center;
+  }
+
+  .cta-badge img {
+    height: 60px;
+  }
+
+  .sp-only {
+    display: inline;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--color-bg);
+    flex-direction: column;
+    padding: 20px 24px 28px;
+    gap: 0;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 8px 24px rgba(26, 26, 26, 0.08);
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
+  .site-nav a {
+    padding: 12px 0;
+    font-size: 0.95rem;
+  }
+
+  .site-header {
+    position: relative;
+  }
+
+  .lang-switch {
+    padding-left: 0;
+    border-left: none;
+    border: none;
   }
 
   .hero__visual {
@@ -628,10 +718,6 @@ html.js [data-reveal].is-visible {
   .site-header {
     padding-top: 24px;
   }
-
-  .site-nav {
-    gap: 20px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -660,13 +746,6 @@ html.js [data-reveal].is-visible {
   .hero__headline {
     font-size: clamp(1.7rem, 7.6vw, 2rem);
   }
-}
-
-/* Language switch link */
-
-.lang-switch {
-  padding-left: 16px;
-  border-left: 1px solid var(--color-border);
 }
 
 /* English page: longer Latin lines need a slightly smaller headline */

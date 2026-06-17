@@ -28,6 +28,9 @@
       <img class="brand__icon" src="../assets/icon_barepaper.png" alt="">
       <span class="brand__name">BarePaper</span>
     </a>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
     <nav class="site-nav" aria-label="Primary">
       <a href="#features">Features</a>
       <a href="#pricing">Pricing</a>
@@ -46,7 +49,7 @@
       <p class="hero__sub">Find what you really think. Watch ideas take shape.<br>BarePaper is the space built for that kind of writing.</p>
       <div class="hero__actions">
         <a class="cta-badge" href="https://apps.apple.com/app/barepaper/id6776892375">
-          <img src="../assets/appstore_badge_en.svg" alt="Download on the App Store" height="54">
+          <img src="../assets/appstore_badge_en.svg" alt="Download on the App Store" height="72">
         </a>
         <span class="hero__note">Free to try</span>
       </div>
@@ -177,7 +180,7 @@
       <span>Start writing.</span>
     </p>
     <a class="cta-badge" href="https://apps.apple.com/app/barepaper/id6776892375">
-      <img src="../assets/appstore_badge_en.svg" alt="Download on the App Store" height="54">
+      <img src="../assets/appstore_badge_en.svg" alt="Download on the App Store" height="72">
     </a>
   </div>
 </section>
@@ -206,6 +209,24 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('[data-reveal]').forEach(function (el) { observer.observe(el); });
+  })();
+
+  (function () {
+    var btn = document.querySelector('.hamburger');
+    var nav = document.querySelector('.site-nav');
+    if (!btn || !nav) return;
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      btn.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
   })();
 </script>
 

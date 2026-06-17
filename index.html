@@ -26,6 +26,9 @@
       <img class="brand__icon" src="assets/icon_barepaper.png" alt="">
       <span class="brand__name">BarePaper</span>
     </a>
+    <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
     <nav class="site-nav" aria-label="Primary">
       <a href="#features">特徴</a>
       <a href="#pricing">価格</a>
@@ -44,7 +47,7 @@
       <p class="hero__sub">書くことで、自分を見つけ、アイデアを生む。<br>そのための特別なスペース。</p>
       <div class="hero__actions">
         <a class="cta-badge" href="https://apps.apple.com/jp/app/barepaper/id6776892375">
-          <img src="assets/appstore_badge_jp.svg" alt="App Storeからダウンロード" height="54">
+          <img src="assets/appstore_badge_jp.svg" alt="App Storeからダウンロード" height="72">
         </a>
         <span class="hero__note">まずは無料で試してみる</span>
       </div>
@@ -108,7 +111,7 @@
 <!-- [4] Five features -->
 <section class="features" id="features" data-reveal>
   <div class="container container--narrow">
-    <h2 class="section-heading">BarePaperを支える、5つのこだわり</h2>
+    <h2 class="section-heading">BarePaperを支える、<br class="sp-only">5つのこだわり</h2>
     <div class="features__list">
       <article class="feature">
         <h3 class="feature__title">紙のような書き心地</h3>
@@ -171,11 +174,11 @@
       <path d="M3 9 C12 3, 20 3, 26 8 S40 12, 45 6" />
     </svg>
     <p class="final-cta__lines">
-      <span>書けば見つかる、あなただけの答え。</span>
+      <span>書けば見つかる、<br class="sp-only">あなただけの答え。</span>
       <span>さあ、はじめよう。</span>
     </p>
     <a class="cta-badge" href="https://apps.apple.com/jp/app/barepaper/id6776892375">
-      <img src="assets/appstore_badge_jp.svg" alt="App Storeからダウンロード" height="54">
+      <img src="assets/appstore_badge_jp.svg" alt="App Storeからダウンロード" height="72">
     </a>
   </div>
 </section>
@@ -204,6 +207,24 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('[data-reveal]').forEach(function (el) { observer.observe(el); });
+  })();
+
+  (function () {
+    var btn = document.querySelector('.hamburger');
+    var nav = document.querySelector('.site-nav');
+    if (!btn || !nav) return;
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      btn.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
   })();
 </script>
 
