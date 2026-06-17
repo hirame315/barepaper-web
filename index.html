@@ -3,25 +3,209 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BarePaper</title>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; max-width: 640px; margin: 60px auto; padding: 0 24px; color: #1a1a1a; }
-    h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
-    p { color: #555; line-height: 1.7; }
-    nav { margin-top: 40px; }
-    nav a { display: inline-block; margin-right: 24px; color: #0070f3; text-decoration: none; font-size: 0.95rem; }
-    nav a:hover { text-decoration: underline; }
-    footer { margin-top: 80px; font-size: 0.8rem; color: #999; }
-  </style>
+  <title>BarePaper — 書くことで、自分の中に埋もれた原石を掘り当てる</title>
+  <meta name="description" content="BarePaperは、「書く」に集中できるiPad用手書きアプリ。紙のような書き心地、区切られないキャンバス、シンプルな画面。書くことで、自分を見つけ、アイデアを生む。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BarePaper — 書くことで、自分の中に埋もれた原石を掘り当てる">
+  <meta property="og:description" content="「書く」に集中できるiPad用手書きアプリ。書くことで、自分を見つけ、アイデアを生む。そのための特別なスペース。">
+  <meta property="og:url" content="https://barepaper.app/">
+  <meta property="og:image" content="https://barepaper.app/assets/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="assets/icon_barepaper.png">
+  <link rel="apple-touch-icon" href="assets/icon_barepaper.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>BarePaper</h1>
-  <p>シンプルな手書きノートアプリ。余計なものをそぎ落とした、書くことだけに集中できる空間。</p>
-  <p style="color:#777; font-size:0.9rem; margin-top:-8px;">A simple handwriting note app. A distraction-free space just for writing.</p>
-  <nav>
-    <a href="privacy.html">プライバシーポリシー / Privacy Policy</a>
-    <a href="support.html">サポート / Support</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="#">
+      <img class="brand__icon" src="assets/icon_barepaper.png" alt="">
+      <span class="brand__name">BarePaper</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#features">特徴</a>
+      <a href="#pricing">価格</a>
+      <a href="support.html">サポート</a>
+      <a class="lang-switch" href="en/index.html">English</a>
+    </nav>
+  </div>
+</header>
+
+<!-- [1] Hero -->
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__copy">
+      <p class="eyebrow">iPadのための静かな手書きスペース</p>
+      <h1 class="hero__headline">書くことで、<br>自分の中に埋もれた<br>原石を掘り当てる。</h1>
+      <p class="hero__sub">書くことで、自分を見つけ、アイデアを生む。<br>そのための特別なスペース。</p>
+      <div class="hero__actions">
+        <a class="cta-badge" href="https://apps.apple.com/jp/app/barepaper/id6776892375">
+          <img src="assets/appstore_badge_jp.svg" alt="App Storeからダウンロード" height="54">
+        </a>
+        <span class="hero__note">まずは無料で試してみる</span>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <img class="hero__mockup" src="assets/ipad_vertical.webp" alt="BarePaperの書き込み画面（iPad縦向き）">
+    </div>
+  </div>
+</section>
+
+<!-- [2] About (no heading) -->
+<section class="about" data-reveal>
+  <div class="container container--text">
+    <svg class="hand-mark" viewBox="0 0 48 14" aria-hidden="true">
+      <path d="M3 9 C12 3, 20 3, 26 8 S40 12, 45 6" />
+    </svg>
+    <div class="about__body">
+      <p>BarePaperは、「書く」に集中できるiPad用手書きアプリです。</p>
+      <p>紙のような書き心地、区切られないキャンバス、シンプルな画面。思考を制限・邪魔する要素を削ぎ落とし、書くことだけが残ったとき、自分の中に埋もれていたものが、はじめて姿を見せはじめます。</p>
+      <p>BarePaperは、そういうスペースとして作られました。</p>
+    </div>
+  </div>
+</section>
+
+<!-- [3] Three discoveries -->
+<section class="discoveries" data-reveal>
+  <div class="container">
+    <h2 class="section-heading">書くことで起こる、3つの発見</h2>
+    <div class="discoveries__grid">
+      <article class="discovery">
+        <svg class="discovery__motif" viewBox="10.5 0 53.5 40" preserveAspectRatio="xMinYMid meet" aria-hidden="true">
+          <path d="M32 33 C18 33, 12 24, 18 17 C24 10, 40 10, 46 17 C52 24, 44 30, 36 27 C30 25, 30 19, 35 18" />
+        </svg>
+        <span class="discovery__num">01</span>
+        <h3 class="discovery__title">素の自分を発見する</h3>
+        <p class="discovery__body">整えたりよく見せたりする必要のない場所で、全てをさらけ出した時、自分でも知らなかった本音や感情がぽろっと出てきます。</p>
+      </article>
+      <article class="discovery">
+        <svg class="discovery__motif" viewBox="6 0 58 40" preserveAspectRatio="xMinYMid meet" aria-hidden="true">
+          <circle cx="12" cy="28" r="4.5" />
+          <circle cx="34" cy="12" r="4.5" />
+          <circle cx="54" cy="26" r="4.5" />
+          <path class="thin" d="M16 25 L30 15 M38 14 L50 23" />
+        </svg>
+        <span class="discovery__num">02</span>
+        <h3 class="discovery__title">発想がつながっていく</h3>
+        <p class="discovery__body">思いついたものを、その隣に、その下に、どんどん書き足せる。スペースの制約がないからこそ、ばらばらだった発想が一つの流れになっていきます。</p>
+      </article>
+      <article class="discovery">
+        <svg class="discovery__motif" viewBox="16.5 0 47.5 40" preserveAspectRatio="xMinYMid meet" aria-hidden="true">
+          <path d="M32 8 L36 18 L46 20 L36 24 L32 34 L28 24 L18 20 L28 18 Z" />
+        </svg>
+        <span class="discovery__num">03</span>
+        <h3 class="discovery__title">未知のアイデアが見つかる</h3>
+        <p class="discovery__body">書きながら考えるから、まだ自分の中になかったはずのものが、形になって出てきます。書くことは、思考のフィルターを通すのではなく、思考そのものを生み出す行為です。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- [4] Five features -->
+<section class="features" id="features" data-reveal>
+  <div class="container container--narrow">
+    <h2 class="section-heading">BarePaperを支える、5つのこだわり</h2>
+    <div class="features__list">
+      <article class="feature">
+        <h3 class="feature__title">紙のような書き心地</h3>
+        <p class="feature__body">紙テクスチャ背景に、シンプルなストローク。書く集中を邪魔する装飾は、最初から入れていません。</p>
+      </article>
+      <article class="feature">
+        <h3 class="feature__title">そぎ落とされた画面</h3>
+        <p class="feature__body">余計な機能は入れていません。書くことだけに集中できる時間を、BarePaperは大事にしています。</p>
+      </article>
+      <article class="feature">
+        <h3 class="feature__title">区切られない場所</h3>
+        <p class="feature__body">スペースの制約は思考の制約。思考の流れを止めないために、どこまでも書き続けられるキャンバスを用意しました。</p>
+      </article>
+      <article class="feature">
+        <h3 class="feature__title">書く瞑想のためのタイマー</h3>
+        <p class="feature__body">決めた時間だけ書くことに没頭できる、控えめなタイマー。「書く瞑想」のための小さな機能です。</p>
+      </article>
+      <article class="feature">
+        <h3 class="feature__title">PDFで持ち出せる</h3>
+        <p class="feature__body">書いたものはPDFで書き出せます。自分の好きな場所に、いつでも保管できます。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- [5] Screenshot -->
+<section class="screenshot" data-reveal>
+  <div class="container">
+    <div class="screenshot__wrap">
+      <img class="screenshot__mockup" src="assets/ipad_horizontal_jp.webp" alt="BarePaperの書き込み画面 — アイデアが広がっていくキャンバス">
+      <p class="screenshot__caption">邪魔されず書ける、あなただけの思考空間</p>
+    </div>
+  </div>
+</section>
+
+<!-- [6] Pricing -->
+<section class="pricing" id="pricing" data-reveal>
+  <div class="container">
+    <h2 class="section-heading">一度買えば、ずっとあなたのもの</h2>
+    <div class="pricing__cards">
+      <div class="price-card">
+        <div class="price-card__plan">無料</div>
+        <div class="price-card__price">¥0</div>
+        <p class="price-card__desc">1つのキャンバスを試せる。<br>まずは「書く」感触をたしかめてください。</p>
+      </div>
+      <div class="price-card price-card--accent">
+        <div class="price-card__plan">買い切り</div>
+        <div class="price-card__price">¥2,500</div>
+        <p class="price-card__desc">キャンバス無制限・PDF出力。<br>一度買えば、追加料金はありません。</p>
+      </div>
+    </div>
+    <p class="pricing__note">サブスクではありません。一度買って、ずっと開く場所として残せます。</p>
+  </div>
+</section>
+
+<!-- [7] Final CTA -->
+<section class="final-cta" data-reveal>
+  <div class="container">
+    <svg class="hand-mark" viewBox="0 0 48 14" aria-hidden="true">
+      <path d="M3 9 C12 3, 20 3, 26 8 S40 12, 45 6" />
+    </svg>
+    <p class="final-cta__lines">
+      <span>書けば見つかる、あなただけの答え。</span>
+      <span>さあ、はじめよう。</span>
+    </p>
+    <a class="cta-badge" href="https://apps.apple.com/jp/app/barepaper/id6776892375">
+      <img src="assets/appstore_badge_jp.svg" alt="App Storeからダウンロード" height="54">
+    </a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <nav class="site-footer__nav">
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="support.html">サポート</a>
   </nav>
-  <footer>&copy; 2026 Akiko Miyatake</footer>
+  <div class="site-footer__copy">&copy; 2026 Akiko Miyatake</div>
+</footer>
+
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach(function (el) { observer.observe(el); });
+  })();
+</script>
+
 </body>
 </html>
