@@ -760,3 +760,67 @@ html[lang="en"] .hero__headline {
     font-size: 1.55rem;
   }
 }
+
+/* i18n: 1ページ内にJP/EN両方を持ち、html[lang]で表示を切り替える（JS無効時はJP表示） */
+
+html[lang="ja"] [lang="en"] {
+  display: none !important;
+}
+
+html[lang="en"] [lang="ja"] {
+  display: none !important;
+}
+
+/* Sub pages (support etc.) — same design language as the LP */
+
+.page-head {
+  padding-top: 72px;
+  padding-bottom: 24px;
+  text-align: center;
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+}
+
+.page-lead {
+  margin: 22px auto 0;
+  max-width: var(--max-text);
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 2;
+}
+
+.contact {
+  border-top: 1px solid var(--color-border-light);
+  text-align: center;
+}
+
+.contact .section-heading {
+  margin-bottom: 36px;
+}
+
+.contact__body {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 2;
+}
+
+.contact__mail {
+  display: inline-block;
+  margin: 22px 0 18px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+}
+
+.contact__note {
+  color: var(--color-text-subtle);
+  font-size: 0.85rem;
+}

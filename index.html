@@ -17,6 +17,43 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>
+    // 言語自動判定: URLの?lang= > 手動切替の保存値 > ブラウザ言語（ja系ならJP、それ以外はEN）
+    (function () {
+      var META = {
+        ja: {
+          title: 'BarePaper — 書くことで、自分の中に埋もれた原石を掘り当てる',
+          desc: 'BarePaperは、「書く」に集中できるiPad用手書きアプリ。紙のような書き心地、区切られないキャンバス、シンプルな画面。書くことで、自分を見つけ、アイデアを生む。'
+        },
+        en: {
+          title: 'BarePaper — A quiet handwriting space for iPad',
+          desc: "There's something buried in you — writing is how you dig. BarePaper is a handwriting app for iPad with an endless paper canvas, built for journaling and thinking. One purchase, no subscription."
+        }
+      };
+      window.__applyLang = function (lang) {
+        document.documentElement.lang = lang;
+        document.title = META[lang].title;
+        var md = document.querySelector('meta[name="description"]');
+        if (md) md.setAttribute('content', META[lang].desc);
+        var hb = document.querySelector('.hamburger');
+        if (hb) hb.setAttribute('aria-label', lang === 'ja' ? 'メニューを開く' : 'Open menu');
+        document.querySelectorAll('[data-alt-ja]').forEach(function (el) {
+          el.setAttribute('alt', el.getAttribute(lang === 'ja' ? 'data-alt-ja' : 'data-alt-en'));
+        });
+      };
+      function pick() {
+        try {
+          var m = location.search.match(/[?&]lang=(ja|en)(&|$)/);
+          if (m) return m[1];
+          var saved = localStorage.getItem('bp-lang');
+          if (saved === 'ja' || saved === 'en') return saved;
+        } catch (e) {}
+        var nav = (navigator.language || (navigator.languages && navigator.languages[0]) || '');
+        return /^ja(-|$)/i.test(nav) ? 'ja' : 'en';
+      }
+      window.__applyLang(pick());
+    })();
+  </script>
 </head>
 <body>
 
@@ -30,10 +67,10 @@
       <span></span><span></span><span></span>
     </button>
     <nav class="site-nav" aria-label="Primary">
-      <a href="#features">特徴</a>
-      <a href="#pricing">価格</a>
-      <a href="support.html">サポート</a>
-      <a class="lang-switch" href="en/index.html">English</a>
+      <a href="#features"><span lang="ja">特徴</span><span lang="en">Features</span></a>
+      <a href="#pricing"><span lang="ja">価格</span><span lang="en">Pricing</span></a>
+      <a href="support.html"><span lang="ja">サポート</span><span lang="en">Support</span></a>
+      <a class="lang-switch" href="#" id="lang-toggle" role="button"><span lang="ja">English</span><span lang="en">日本語</span></a>
     </nav>
   </div>
 </header>
@@ -42,18 +79,21 @@
 <section class="hero">
   <div class="hero__inner">
     <div class="hero__copy">
-      <p class="eyebrow">iPadのための静かな手書きスペース</p>
-      <h1 class="hero__headline">書くことで、<br>自分の中に埋もれた<br>原石を掘り当てる。</h1>
-      <p class="hero__sub">書くことで、自分を見つけ、アイデアを生む。<br>そのための特別なスペース。</p>
+      <p class="eyebrow"><span lang="ja">iPadのための静かな手書きスペース</span><span lang="en">A quiet handwriting space for iPad</span></p>
+      <h1 class="hero__headline"><span lang="ja">書くことで、<br>自分の中に埋もれた<br>原石を掘り当てる。</span><span lang="en">There's something<br>buried in you.<br>Writing is how you dig.</span></h1>
+      <p class="hero__sub"><span lang="ja">書くことで、自分を見つけ、アイデアを生む。<br>そのための特別なスペース。</span><span lang="en">Find what you really think. Watch ideas take shape.<br>BarePaper is the space built for that kind of writing.</span></p>
       <div class="hero__actions">
-        <a class="cta-badge" href="https://apps.apple.com/jp/app/barepaper/id6776892375">
+        <a class="cta-badge" lang="ja" href="https://apps.apple.com/jp/app/barepaper/id6776892375">
           <img src="assets/appstore_badge_jp.svg" alt="App Storeからダウンロード" height="72">
         </a>
-        <span class="hero__note">まずは無料で試してみる</span>
+        <a class="cta-badge" lang="en" href="https://apps.apple.com/app/barepaper/id6776892375">
+          <img src="assets/appstore_badge_en.svg" alt="Download on the App Store" height="72">
+        </a>
+        <span class="hero__note"><span lang="ja">まずは無料で試してみる</span><span lang="en">Free to try</span></span>
       </div>
     </div>
     <div class="hero__visual">
-      <img class="hero__mockup" src="assets/ipad_vertical.webp" alt="BarePaperの書き込み画面（iPad縦向き）">
+      <img class="hero__mockup" src="assets/ipad_vertical.webp" alt="BarePaperの書き込み画面（iPad縦向き）" data-alt-ja="BarePaperの書き込み画面（iPad縦向き）" data-alt-en="BarePaper's writing canvas (iPad portrait)">
     </div>
   </div>
 </section>
@@ -64,10 +104,15 @@
     <svg class="hand-mark" viewBox="0 0 48 14" aria-hidden="true">
       <path d="M3 9 C12 3, 20 3, 26 8 S40 12, 45 6" />
     </svg>
-    <div class="about__body">
+    <div class="about__body" lang="ja">
       <p>BarePaperは、「書く」に集中できるiPad用手書きアプリです。</p>
       <p>紙のような書き心地、区切られないキャンバス、シンプルな画面。思考を制限・邪魔する要素を削ぎ落とし、書くことだけが残ったとき、自分の中に埋もれていたものが、はじめて姿を見せはじめます。</p>
       <p>BarePaperは、そういうスペースとして作られました。</p>
+    </div>
+    <div class="about__body" lang="en">
+      <p>BarePaper is a handwriting app for iPad with one job: writing.</p>
+      <p>It feels like paper. The canvas never ends. The screen stays out of your way. When everything that interrupts your thinking is stripped away and only writing is left, the things you've kept buried start to surface.</p>
+      <p>That's the space BarePaper was built to be.</p>
     </div>
   </div>
 </section>
@@ -75,15 +120,15 @@
 <!-- [3] Three discoveries -->
 <section class="discoveries" data-reveal>
   <div class="container">
-    <h2 class="section-heading">書くことで起こる、3つの発見</h2>
+    <h2 class="section-heading"><span lang="ja">書くことで起こる、3つの発見</span><span lang="en">Three things writing uncovers</span></h2>
     <div class="discoveries__grid">
       <article class="discovery">
         <svg class="discovery__motif" viewBox="10.5 0 53.5 40" preserveAspectRatio="xMinYMid meet" aria-hidden="true">
           <path d="M32 33 C18 33, 12 24, 18 17 C24 10, 40 10, 46 17 C52 24, 44 30, 36 27 C30 25, 30 19, 35 18" />
         </svg>
         <span class="discovery__num">01</span>
-        <h3 class="discovery__title">素の自分を発見する</h3>
-        <p class="discovery__body">整えたりよく見せたりする必要のない場所で、全てをさらけ出した時、自分でも知らなかった本音や感情がぽろっと出てきます。</p>
+        <h3 class="discovery__title"><span lang="ja">素の自分を発見する</span><span lang="en">Meet your unfiltered self</span></h3>
+        <p class="discovery__body"><span lang="ja">整えたりよく見せたりする必要のない場所で、全てをさらけ出した時、自分でも知らなかった本音や感情がぽろっと出てきます。</span><span lang="en">No one's reading. Nothing needs to look good. When you stop editing yourself, feelings you didn't know you had find their way onto the page.</span></p>
       </article>
       <article class="discovery">
         <svg class="discovery__motif" viewBox="6 0 58 40" preserveAspectRatio="xMinYMid meet" aria-hidden="true">
@@ -93,16 +138,16 @@
           <path class="thin" d="M16 25 L30 15 M38 14 L50 23" />
         </svg>
         <span class="discovery__num">02</span>
-        <h3 class="discovery__title">発想がつながっていく</h3>
-        <p class="discovery__body">思いついたものを、その隣に、その下に、どんどん書き足せる。スペースの制約がないからこそ、ばらばらだった発想が一つの流れになっていきます。</p>
+        <h3 class="discovery__title"><span lang="ja">発想がつながっていく</span><span lang="en">Watch ideas connect</span></h3>
+        <p class="discovery__body"><span lang="ja">思いついたものを、その隣に、その下に、どんどん書き足せる。スペースの制約がないからこそ、ばらばらだった発想が一つの流れになっていきます。</span><span lang="en">Add a thought beside a thought, under a thought, anywhere. With no edges and no pages to turn, scattered notes start to become one line of thinking.</span></p>
       </article>
       <article class="discovery">
         <svg class="discovery__motif" viewBox="16.5 0 47.5 40" preserveAspectRatio="xMinYMid meet" aria-hidden="true">
           <path d="M32 8 L36 18 L46 20 L36 24 L32 34 L28 24 L18 20 L28 18 Z" />
         </svg>
         <span class="discovery__num">03</span>
-        <h3 class="discovery__title">未知のアイデアが見つかる</h3>
-        <p class="discovery__body">書きながら考えるから、まだ自分の中になかったはずのものが、形になって出てきます。書くことは、思考のフィルターを通すのではなく、思考そのものを生み出す行為です。</p>
+        <h3 class="discovery__title"><span lang="ja">未知のアイデアが見つかる</span><span lang="en">Find ideas you didn't know you had</span></h3>
+        <p class="discovery__body"><span lang="ja">書きながら考えるから、まだ自分の中になかったはずのものが、形になって出てきます。書くことは、思考のフィルターを通すのではなく、思考そのものを生み出す行為です。</span><span lang="en">You think as you write — so things that weren't in your head yet show up on the page. Writing doesn't just record thought. It creates it.</span></p>
       </article>
     </div>
   </div>
@@ -111,27 +156,27 @@
 <!-- [4] Five features -->
 <section class="features" id="features" data-reveal>
   <div class="container container--narrow">
-    <h2 class="section-heading">BarePaperを支える、<br class="sp-only">5つのこだわり</h2>
+    <h2 class="section-heading"><span lang="ja">BarePaperを支える、<br class="sp-only">5つのこだわり</span><span lang="en">Five deliberate choices</span></h2>
     <div class="features__list">
       <article class="feature">
-        <h3 class="feature__title">紙のような書き心地</h3>
-        <p class="feature__body">紙テクスチャ背景に、シンプルなストローク。書く集中を邪魔する装飾は、最初から入れていません。</p>
+        <h3 class="feature__title"><span lang="ja">紙のような書き心地</span><span lang="en">Feels like paper</span></h3>
+        <p class="feature__body"><span lang="ja">紙テクスチャ背景に、シンプルなストローク。書く集中を邪魔する装飾は、最初から入れていません。</span><span lang="en">A paper-textured background and clean, simple strokes. Nothing decorative ever made it in — by design.</span></p>
       </article>
       <article class="feature">
-        <h3 class="feature__title">そぎ落とされた画面</h3>
-        <p class="feature__body">余計な機能は入れていません。書くことだけに集中できる時間を、BarePaperは大事にしています。</p>
+        <h3 class="feature__title"><span lang="ja">そぎ落とされた画面</span><span lang="en">A pared-down screen</span></h3>
+        <p class="feature__body"><span lang="ja">余計な機能は入れていません。書くことだけに集中できる時間を、BarePaperは大事にしています。</span><span lang="en">No toolbars full of features you'll never use. Your writing time stays yours.</span></p>
       </article>
       <article class="feature">
-        <h3 class="feature__title">区切られない場所</h3>
-        <p class="feature__body">スペースの制約は思考の制約。思考の流れを止めないために、どこまでも書き続けられるキャンバスを用意しました。</p>
+        <h3 class="feature__title"><span lang="ja">区切られない場所</span><span lang="en">A canvas without edges</span></h3>
+        <p class="feature__body"><span lang="ja">スペースの制約は思考の制約。思考の流れを止めないために、どこまでも書き続けられるキャンバスを用意しました。</span><span lang="en">A border is a limit on thinking. The canvas keeps going as long as your thoughts do.</span></p>
       </article>
       <article class="feature">
-        <h3 class="feature__title">書く瞑想のためのタイマー</h3>
-        <p class="feature__body">決めた時間だけ書くことに没頭できる、控えめなタイマー。「書く瞑想」のための小さな機能です。</p>
+        <h3 class="feature__title"><span lang="ja">書く瞑想のためのタイマー</span><span lang="en">A timer for writing meditation</span></h3>
+        <p class="feature__body"><span lang="ja">決めた時間だけ書くことに没頭できる、控えめなタイマー。「書く瞑想」のための小さな機能です。</span><span lang="en">Set a time, sink in, and write until it gently lets you know. A small feature for treating writing like meditation.</span></p>
       </article>
       <article class="feature">
-        <h3 class="feature__title">PDFで持ち出せる</h3>
-        <p class="feature__body">書いたものはPDFで書き出せます。自分の好きな場所に、いつでも保管できます。</p>
+        <h3 class="feature__title"><span lang="ja">PDFで持ち出せる</span><span lang="en">Take it with you as PDF</span></h3>
+        <p class="feature__body"><span lang="ja">書いたものはPDFで書き出せます。自分の好きな場所に、いつでも保管できます。</span><span lang="en">Export your pages as PDFs and keep them anywhere you like.</span></p>
       </article>
     </div>
   </div>
@@ -141,8 +186,9 @@
 <section class="screenshot" data-reveal>
   <div class="container">
     <div class="screenshot__wrap">
-      <img class="screenshot__mockup" src="assets/ipad_horizontal_jp.webp" alt="BarePaperの書き込み画面 — アイデアが広がっていくキャンバス">
-      <p class="screenshot__caption">邪魔されず書ける、あなただけの思考空間</p>
+      <img class="screenshot__mockup" lang="ja" src="assets/ipad_horizontal_jp.webp" alt="BarePaperの書き込み画面 — アイデアが広がっていくキャンバス">
+      <img class="screenshot__mockup" lang="en" src="assets/ipad_horizontal_en.webp" alt="BarePaper's writing canvas — ideas spreading across an edgeless page">
+      <p class="screenshot__caption"><span lang="ja">邪魔されず書ける、あなただけの思考空間</span><span lang="en">Room to hear yourself think.</span></p>
     </div>
   </div>
 </section>
@@ -150,20 +196,20 @@
 <!-- [6] Pricing -->
 <section class="pricing" id="pricing" data-reveal>
   <div class="container">
-    <h2 class="section-heading">一度買えば、ずっとあなたのもの</h2>
+    <h2 class="section-heading"><span lang="ja">一度買えば、ずっとあなたのもの</span><span lang="en">Buy once. Yours forever.</span></h2>
     <div class="pricing__cards">
       <div class="price-card">
-        <div class="price-card__plan">無料</div>
-        <div class="price-card__price">¥0</div>
-        <p class="price-card__desc">1つのキャンバスを試せる。<br>まずは「書く」感触をたしかめてください。</p>
+        <div class="price-card__plan"><span lang="ja">無料</span><span lang="en">Free</span></div>
+        <div class="price-card__price"><span lang="ja">¥0</span><span lang="en">$0</span></div>
+        <p class="price-card__desc"><span lang="ja">1つのキャンバスを試せる。<br>まずは「書く」感触をたしかめてください。</span><span lang="en">Try one canvas.<br>See how writing here feels.</span></p>
       </div>
       <div class="price-card price-card--accent">
-        <div class="price-card__plan">買い切り</div>
-        <div class="price-card__price">¥2,500</div>
-        <p class="price-card__desc">キャンバス無制限・PDF出力。<br>一度買えば、追加料金はありません。</p>
+        <div class="price-card__plan"><span lang="ja">買い切り</span><span lang="en">One-time purchase</span></div>
+        <div class="price-card__price"><span lang="ja">¥2,500</span><span lang="en">$17.99</span></div>
+        <p class="price-card__desc"><span lang="ja">キャンバス無制限・PDF出力。<br>一度買えば、追加料金はありません。</span><span lang="en">Unlimited canvases and PDF export.<br>Pay once. That's it.</span></p>
       </div>
     </div>
-    <p class="pricing__note">サブスクではありません。一度買って、ずっと開く場所として残せます。</p>
+    <p class="pricing__note"><span lang="ja">サブスクではありません。一度買って、ずっと開く場所として残せます。</span><span lang="en">No subscriptions. You buy it once, and it's a place you keep.</span></p>
   </div>
 </section>
 
@@ -174,19 +220,22 @@
       <path d="M3 9 C12 3, 20 3, 26 8 S40 12, 45 6" />
     </svg>
     <p class="final-cta__lines">
-      <span>書けば見つかる、<br class="sp-only">あなただけの答え。</span>
-      <span>さあ、はじめよう。</span>
+      <span lang="ja"><span>書けば見つかる、<br class="sp-only">あなただけの答え。</span><span>さあ、はじめよう。</span></span>
+      <span lang="en"><span>What you're looking for is already in you.</span><span>Start writing.</span></span>
     </p>
-    <a class="cta-badge" href="https://apps.apple.com/jp/app/barepaper/id6776892375">
+    <a class="cta-badge" lang="ja" href="https://apps.apple.com/jp/app/barepaper/id6776892375">
       <img src="assets/appstore_badge_jp.svg" alt="App Storeからダウンロード" height="72">
+    </a>
+    <a class="cta-badge" lang="en" href="https://apps.apple.com/app/barepaper/id6776892375">
+      <img src="assets/appstore_badge_en.svg" alt="Download on the App Store" height="72">
     </a>
   </div>
 </section>
 
 <footer class="site-footer">
   <nav class="site-footer__nav">
-    <a href="privacy.html">プライバシーポリシー</a>
-    <a href="support.html">サポート</a>
+    <a href="privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a>
+    <a href="support.html"><span lang="ja">サポート</span><span lang="en">Support</span></a>
   </nav>
   <div class="site-footer__copy">&copy; 2026 Akiko Miyatake</div>
 </footer>
@@ -219,11 +268,24 @@
       btn.setAttribute('aria-expanded', open);
     });
     nav.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') {
+      if (e.target.closest('a')) {
         nav.classList.remove('is-open');
         btn.classList.remove('is-open');
         btn.setAttribute('aria-expanded', 'false');
       }
+    });
+  })();
+
+  (function () {
+    // 手動の言語切替（ページ遷移なし・選択はlocalStorageに保存）
+    window.__applyLang(document.documentElement.lang);
+    var toggle = document.getElementById('lang-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      var next = document.documentElement.lang === 'ja' ? 'en' : 'ja';
+      window.__applyLang(next);
+      try { localStorage.setItem('bp-lang', next); } catch (err) {}
     });
   })();
 </script>

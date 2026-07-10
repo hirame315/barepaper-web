@@ -3,64 +3,173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support | BarePaper</title>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; max-width: 640px; margin: 60px auto; padding: 0 24px; color: #1a1a1a; }
-    h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 4px; }
-    h2 { font-size: 1.05rem; font-weight: 600; margin-top: 32px; margin-bottom: 8px; }
-    p, li { color: #333; line-height: 1.8; font-size: 0.95rem; }
-    ul { padding-left: 1.4em; }
-    a { color: #0070f3; }
-    .divider { border: none; border-top: 2px solid #eee; margin: 60px 0; }
-    footer { margin-top: 60px; font-size: 0.8rem; color: #999; border-top: 1px solid #eee; padding-top: 16px; }
-  </style>
+  <title>サポート | BarePaper</title>
+  <meta name="description" content="BarePaperのサポートページ。よくある質問とお問い合わせ先のご案内。">
+  <link rel="icon" type="image/png" href="assets/icon_barepaper.png">
+  <link rel="apple-touch-icon" href="assets/icon_barepaper.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // 言語自動判定: URLの?lang= > 手動切替の保存値 > ブラウザ言語（ja系ならJP、それ以外はEN）
+    (function () {
+      var META = {
+        ja: { title: 'サポート | BarePaper', desc: 'BarePaperのサポートページ。よくある質問とお問い合わせ先のご案内。' },
+        en: { title: 'Support | BarePaper', desc: 'BarePaper support — frequently asked questions and how to contact us.' }
+      };
+      window.__applyLang = function (lang) {
+        document.documentElement.lang = lang;
+        document.title = META[lang].title;
+        var md = document.querySelector('meta[name="description"]');
+        if (md) md.setAttribute('content', META[lang].desc);
+        var hb = document.querySelector('.hamburger');
+        if (hb) hb.setAttribute('aria-label', lang === 'ja' ? 'メニューを開く' : 'Open menu');
+      };
+      function pick() {
+        try {
+          var m = location.search.match(/[?&]lang=(ja|en)(&|$)/);
+          if (m) return m[1];
+          var saved = localStorage.getItem('bp-lang');
+          if (saved === 'ja' || saved === 'en') return saved;
+        } catch (e) {}
+        var nav = (navigator.language || (navigator.languages && navigator.languages[0]) || '');
+        return /^ja(-|$)/i.test(nav) ? 'ja' : 'en';
+      }
+      window.__applyLang(pick());
+    })();
+  </script>
 </head>
 <body>
 
-  <!-- 日本語 -->
-  <h1>サポート</h1>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html">
+      <img class="brand__icon" src="assets/icon_barepaper.png" alt="">
+      <span class="brand__name">BarePaper</span>
+    </a>
+    <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="index.html#features"><span lang="ja">特徴</span><span lang="en">Features</span></a>
+      <a href="index.html#pricing"><span lang="ja">価格</span><span lang="en">Pricing</span></a>
+      <a href="support.html"><span lang="ja">サポート</span><span lang="en">Support</span></a>
+      <a class="lang-switch" href="#" id="lang-toggle" role="button"><span lang="ja">English</span><span lang="en">日本語</span></a>
+    </nav>
+  </div>
+</header>
 
-  <p>BarePaperをご利用いただきありがとうございます。ご不明な点やお困りのことがあれば、お気軽にご連絡ください。</p>
+<!-- [1] Page head -->
+<section class="page-head">
+  <div class="container container--text">
+    <svg class="hand-mark" viewBox="0 0 48 14" aria-hidden="true">
+      <path d="M3 9 C12 3, 20 3, 26 8 S40 12, 45 6" />
+    </svg>
+    <h1 class="page-title"><span lang="ja">サポート</span><span lang="en">Support</span></h1>
+    <p class="page-lead"><span lang="ja">BarePaperをご利用いただきありがとうございます。<br>ご不明な点やお困りのことがあれば、お気軽にご連絡ください。</span><span lang="en">Thank you for using BarePaper.<br>If you have any questions or need help, feel free to reach out.</span></p>
+  </div>
+</section>
 
-  <h2>よくある質問</h2>
+<!-- [2] FAQ -->
+<section class="faq" data-reveal>
+  <div class="container container--narrow">
+    <h2 class="section-heading"><span lang="ja">よくある質問</span><span lang="en">FAQ</span></h2>
+    <div class="features__list">
+      <article class="feature">
+        <h3 class="feature__title"><span lang="ja">データはどこに保存されますか？</span><span lang="en">Where is my data stored?</span></h3>
+        <p class="feature__body"><span lang="ja">作成したノートはすべてお使いのデバイス内に保存されます。外部サーバーへの送信は行いません。</span><span lang="en">All notes are stored locally on your device. No data is sent to external servers.</span></p>
+      </article>
+      <!--
+        v1.1リリース後に有効化するFAQ（iCloud同期・アプリロック）:
+      <article class="feature">
+        <h3 class="feature__title"><span lang="ja">iCloud同期はどう使いますか？</span><span lang="en">How does iCloud sync work?</span></h3>
+        <p class="feature__body"><span lang="ja">設定からONにすると、ノートをあなた自身のiCloudにバックアップ・同期できます。同期先はご自分のiCloudだけで、開発者のサーバーには何も送信されません。</span><span lang="en">Turn it on in Settings to back up and sync your notes with your own iCloud. Your notes sync only to your personal iCloud — nothing is ever sent to our servers.</span></p>
+      </article>
+      <article class="feature">
+        <h3 class="feature__title"><span lang="ja">ノートにロックをかけられますか？</span><span lang="en">Can I lock my notes?</span></h3>
+        <p class="feature__body"><span lang="ja">設定からアプリロックをONにすると、Face IDまたはパスコードでアプリ全体を保護できます。</span><span lang="en">Yes. Enable the app lock in Settings to protect the app with Face ID or a passcode.</span></p>
+      </article>
+      -->
+      <article class="feature">
+        <h3 class="feature__title"><span lang="ja">購入の復元はできますか？</span><span lang="en">Can I restore my purchase?</span></h3>
+        <p class="feature__body"><span lang="ja">アプリ内の「購入を復元」ボタンから、同じApple IDでの購入を復元できます。</span><span lang="en">Yes. Tap the "Restore Purchases" button in the app to restore any previous purchases made with the same Apple ID.</span></p>
+      </article>
+      <article class="feature">
+        <h3 class="feature__title"><span lang="ja">返金を希望する場合は？</span><span lang="en">How do I request a refund?</span></h3>
+        <p class="feature__body"><span lang="ja">購入に関する返金はApple Inc.の規約に従って対応されます。<a href="https://support.apple.com/ja-jp/118223" target="_blank" rel="noopener">Appleサポート</a>までお問い合わせください。</span><span lang="en">Refund requests are handled by Apple Inc. in accordance with their policies. Please visit <a href="https://support.apple.com/en-us/118223" target="_blank" rel="noopener">Apple Support</a> for assistance.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
 
-  <h2 style="font-size:0.95rem; color:#444;">データはどこに保存されますか？</h2>
-  <p>作成したノートはすべてお使いのデバイス内に保存されます。外部サーバーへの送信は行いません。</p>
+<!-- [3] Contact -->
+<section class="contact" data-reveal>
+  <div class="container container--text">
+    <h2 class="section-heading"><span lang="ja">お問い合わせ</span><span lang="en">Contact</span></h2>
+    <p class="contact__body"><span lang="ja">上記で解決しない場合は、メールにてお気軽にどうぞ。</span><span lang="en">If your question isn't answered above, please email us.</span></p>
+    <a class="contact__mail" href="mailto:h29449206@gmail.com">h29449206@gmail.com</a>
+    <p class="contact__note"><span lang="ja">通常2〜3営業日以内にご返答いたします。</span><span lang="en">We typically respond within 2–3 business days.</span></p>
+  </div>
+</section>
 
-  <h2 style="font-size:0.95rem; color:#444;">購入の復元はできますか？</h2>
-  <p>アプリ内の「購入を復元」ボタンから、同じApple IDでの購入を復元できます。</p>
+<footer class="site-footer">
+  <nav class="site-footer__nav">
+    <a href="privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a>
+    <a href="support.html"><span lang="ja">サポート</span><span lang="en">Support</span></a>
+  </nav>
+  <div class="site-footer__copy">&copy; 2026 Akiko Miyatake</div>
+</footer>
 
-  <h2 style="font-size:0.95rem; color:#444;">返金を希望する場合は？</h2>
-  <p>購入に関する返金はApple Inc.の規約に従って対応されます。<a href="https://support.apple.com/ja-jp/118223" target="_blank">Apple サポート</a>までお問い合わせください。</p>
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach(function (el) { observer.observe(el); });
+  })();
 
-  <h2>お問い合わせ</h2>
-  <p>上記で解決しない場合は、メールにてお気軽にどうぞ。<br>
-  <a href="mailto:h29449206@gmail.com">h29449206@gmail.com</a></p>
-  <p>通常2〜3営業日以内にご返答いたします。</p>
+  (function () {
+    var btn = document.querySelector('.hamburger');
+    var nav = document.querySelector('.site-nav');
+    if (!btn || !nav) return;
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      btn.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) {
+        nav.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
 
-  <hr class="divider">
+  (function () {
+    // 手動の言語切替（ページ遷移なし・選択はlocalStorageに保存）
+    window.__applyLang(document.documentElement.lang);
+    var toggle = document.getElementById('lang-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      var next = document.documentElement.lang === 'ja' ? 'en' : 'ja';
+      window.__applyLang(next);
+      try { localStorage.setItem('bp-lang', next); } catch (err) {}
+    });
+  })();
+</script>
 
-  <!-- English -->
-  <h1>Support</h1>
-
-  <p>Thank you for using BarePaper. If you have any questions or need help, feel free to reach out.</p>
-
-  <h2>FAQ</h2>
-
-  <h2 style="font-size:0.95rem; color:#444;">Where is my data stored?</h2>
-  <p>All notes are stored locally on your device. No data is sent to external servers.</p>
-
-  <h2 style="font-size:0.95rem; color:#444;">Can I restore my purchase?</h2>
-  <p>Yes. Tap the "Restore Purchases" button in the app to restore any previous purchases made with the same Apple ID.</p>
-
-  <h2 style="font-size:0.95rem; color:#444;">How do I request a refund?</h2>
-  <p>Refund requests are handled by Apple Inc. in accordance with their policies. Please visit <a href="https://support.apple.com/en-us/118223" target="_blank">Apple Support</a> for assistance.</p>
-
-  <h2>Contact</h2>
-  <p>If your question isn't answered above, please email us:<br>
-  <a href="mailto:h29449206@gmail.com">h29449206@gmail.com</a></p>
-  <p>We typically respond within 2–3 business days.</p>
-
-  <footer>&copy; 2026 Akiko Miyatake | <a href="index.html">BarePaper</a></footer>
 </body>
 </html>
