@@ -3,73 +3,190 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy | BarePaper</title>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; max-width: 640px; margin: 60px auto; padding: 0 24px; color: #1a1a1a; }
-    h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 4px; }
-    h2 { font-size: 1.05rem; font-weight: 600; margin-top: 32px; margin-bottom: 8px; }
-    p, li { color: #333; line-height: 1.8; font-size: 0.95rem; }
-    ul { padding-left: 1.4em; }
-    a { color: #0070f3; }
-    .meta { color: #888; font-size: 0.85rem; margin-bottom: 40px; }
-    .divider { border: none; border-top: 2px solid #eee; margin: 60px 0; }
-    footer { margin-top: 60px; font-size: 0.8rem; color: #999; border-top: 1px solid #eee; padding-top: 16px; }
-  </style>
+  <title>プライバシーポリシー | BarePaper</title>
+  <meta name="description" content="BarePaperのプライバシーポリシー。">
+  <link rel="icon" type="image/png" href="assets/icon_barepaper.png">
+  <link rel="apple-touch-icon" href="assets/icon_barepaper.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // 言語自動判定: URLの?lang= > 手動切替の保存値 > ブラウザ言語（ja系ならJP、それ以外はEN）
+    (function () {
+      var META = {
+        ja: { title: 'プライバシーポリシー | BarePaper', desc: 'BarePaperのプライバシーポリシー。' },
+        en: { title: 'Privacy Policy | BarePaper', desc: 'BarePaper privacy policy.' }
+      };
+      window.__applyLang = function (lang) {
+        document.documentElement.lang = lang;
+        document.title = META[lang].title;
+        var md = document.querySelector('meta[name="description"]');
+        if (md) md.setAttribute('content', META[lang].desc);
+        var hb = document.querySelector('.hamburger');
+        if (hb) hb.setAttribute('aria-label', lang === 'ja' ? 'メニューを開く' : 'Open menu');
+      };
+      function pick() {
+        try {
+          var m = location.search.match(/[?&]lang=(ja|en)(&|$)/);
+          if (m) return m[1];
+          var saved = localStorage.getItem('bp-lang');
+          if (saved === 'ja' || saved === 'en') return saved;
+        } catch (e) {}
+        var nav = (navigator.language || (navigator.languages && navigator.languages[0]) || '');
+        return /^ja(-|$)/i.test(nav) ? 'ja' : 'en';
+      }
+      window.__applyLang(pick());
+    })();
+  </script>
 </head>
 <body>
 
-  <!-- 日本語 -->
-  <h1>プライバシーポリシー</h1>
-  <p class="meta">最終更新日：2026年5月23日</p>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html">
+      <img class="brand__icon" src="assets/icon_barepaper.png" alt="">
+      <span class="brand__name">BarePaper</span>
+    </a>
+    <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="index.html#features"><span lang="ja">特徴</span><span lang="en">Features</span></a>
+      <a href="index.html#pricing"><span lang="ja">価格</span><span lang="en">Pricing</span></a>
+      <a href="support.html"><span lang="ja">サポート</span><span lang="en">Support</span></a>
+      <a class="lang-switch" href="#" id="lang-toggle" role="button"><span lang="ja">English</span><span lang="en">日本語</span></a>
+    </nav>
+  </div>
+</header>
 
-  <p>Akiko Miyatake（以下「開発者」）は、BarePaper（以下「本アプリ」）におけるユーザーのプライバシーを尊重します。本ポリシーでは、本アプリが収集・利用する情報について説明します。</p>
+<!-- [1] Page head -->
+<section class="page-head">
+  <div class="container container--text">
+    <svg class="hand-mark" viewBox="0 0 48 14" aria-hidden="true">
+      <path d="M3 9 C12 3, 20 3, 26 8 S40 12, 45 6" />
+    </svg>
+    <h1 class="page-title"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></h1>
+    <p class="page-lead"><span lang="ja">最終更新日：2026年5月23日</span><span lang="en">Last updated: May 23, 2026</span></p>
+  </div>
+</section>
 
-  <h2>収集する情報</h2>
-  <p>本アプリはユーザーの個人情報を収集しません。ユーザーが作成したノートやデータはすべてお使いのデバイス内にのみ保存され、開発者のサーバーには送信されません。</p>
+<!-- [2] Policy body -->
+<section class="legal" data-reveal>
+  <div class="container container--text">
+    <div class="legal__body" lang="ja">
+      <p>Akiko Miyatake（以下「開発者」）は、BarePaper（以下「本アプリ」）におけるユーザーのプライバシーを尊重します。本ポリシーでは、本アプリが収集・利用する情報について説明します。</p>
 
-  <h2>インアプリ購入</h2>
-  <p>本アプリはアプリ内課金機能を提供しています。購入処理はApple Inc.が提供するApp Storeの仕組みを通じて行われます。開発者は決済情報にアクセスすることはありません。</p>
+      <h2>収集する情報</h2>
+      <p>本アプリはユーザーの個人情報を収集しません。ユーザーが作成したノートやデータはすべてお使いのデバイス内にのみ保存され、開発者のサーバーには送信されません。</p>
+      <!--
+        v1.1（iCloud同期）リリース後は上の段落を以下に差し替え、最終更新日も更新する:
+      <p>本アプリはユーザーの個人情報を収集しません。ユーザーが作成したノートやデータは、初期設定ではお使いのデバイス内にのみ保存されます。設定でiCloud同期を有効にした場合は、ユーザー自身のiCloud（プライベートコンテナ）にも保存されます。いずれの場合も、開発者のサーバーに送信されることはありません。</p>
+      -->
 
-  <h2>第三者への情報提供</h2>
-  <p>本アプリは、ユーザーの情報を第三者に販売・提供・開示しません。</p>
+      <h2>インアプリ購入</h2>
+      <p>本アプリはアプリ内課金機能を提供しています。購入処理はApple Inc.が提供するApp Storeの仕組みを通じて行われます。開発者は決済情報にアクセスすることはありません。</p>
 
-  <h2>子どものプライバシー</h2>
-  <p>本アプリは13歳未満の子どもを対象としておらず、意図的に13歳未満の子どもから個人情報を収集することはありません。</p>
+      <h2>第三者への情報提供</h2>
+      <p>本アプリは、ユーザーの情報を第三者に販売・提供・開示しません。</p>
 
-  <h2>ポリシーの変更</h2>
-  <p>本プライバシーポリシーは予告なく改訂される場合があります。変更があった場合は本ページを更新します。</p>
+      <h2>子どものプライバシー</h2>
+      <p>本アプリは13歳未満の子どもを対象としておらず、意図的に13歳未満の子どもから個人情報を収集することはありません。</p>
 
-  <h2>お問い合わせ</h2>
-  <p>プライバシーポリシーに関するご質問は、下記までお問い合わせください。<br>
-  <a href="mailto:h29449206@gmail.com">h29449206@gmail.com</a></p>
+      <h2>ポリシーの変更</h2>
+      <p>本プライバシーポリシーは予告なく改訂される場合があります。変更があった場合は本ページを更新します。</p>
 
-  <hr class="divider">
+      <h2>お問い合わせ</h2>
+      <p>プライバシーポリシーに関するご質問は、下記までお問い合わせください。<br>
+      <a href="mailto:h29449206@gmail.com">h29449206@gmail.com</a></p>
+    </div>
 
-  <!-- English -->
-  <h1>Privacy Policy</h1>
-  <p class="meta">Last updated: May 23, 2026</p>
+    <div class="legal__body" lang="en">
+      <p>Akiko Miyatake ("Developer") respects the privacy of users of BarePaper ("the App"). This policy explains what information the App collects and how it is used.</p>
 
-  <p>Akiko Miyatake ("Developer") respects the privacy of users of BarePaper ("the App"). This policy explains what information the App collects and how it is used.</p>
+      <h2>Information We Collect</h2>
+      <p>The App does not collect any personal information. All notes and data created by the user are stored solely on the user's device and are never transmitted to the Developer's servers.</p>
+      <!--
+        After the v1.1 (iCloud sync) release, replace the paragraph above with the following and update the date:
+      <p>The App does not collect any personal information. By default, all notes and data created by the user are stored solely on the user's device. If iCloud sync is enabled in Settings, notes are also stored in the user's own private iCloud container. In either case, nothing is ever transmitted to the Developer's servers.</p>
+      -->
 
-  <h2>Information We Collect</h2>
-  <p>The App does not collect any personal information. All notes and data created by the user are stored solely on the user's device and are never transmitted to the Developer's servers.</p>
+      <h2>In-App Purchases</h2>
+      <p>The App offers in-app purchases. All payment processing is handled by Apple Inc. through the App Store. The Developer does not have access to any payment information.</p>
 
-  <h2>In-App Purchases</h2>
-  <p>The App offers in-app purchases. All payment processing is handled by Apple Inc. through the App Store. The Developer does not have access to any payment information.</p>
+      <h2>Third-Party Disclosure</h2>
+      <p>The App does not sell, share, or disclose user information to any third parties.</p>
 
-  <h2>Third-Party Disclosure</h2>
-  <p>The App does not sell, share, or disclose user information to any third parties.</p>
+      <h2>Children's Privacy</h2>
+      <p>The App is not directed at children under 13, and the Developer does not knowingly collect personal information from children under 13.</p>
 
-  <h2>Children's Privacy</h2>
-  <p>The App is not directed at children under 13, and the Developer does not knowingly collect personal information from children under 13.</p>
+      <h2>Changes to This Policy</h2>
+      <p>This Privacy Policy may be updated without prior notice. Any changes will be reflected on this page.</p>
 
-  <h2>Changes to This Policy</h2>
-  <p>This Privacy Policy may be updated without prior notice. Any changes will be reflected on this page.</p>
+      <h2>Contact</h2>
+      <p>If you have any questions about this Privacy Policy, please contact us at:<br>
+      <a href="mailto:h29449206@gmail.com">h29449206@gmail.com</a></p>
+    </div>
+  </div>
+</section>
 
-  <h2>Contact</h2>
-  <p>If you have any questions about this Privacy Policy, please contact us at:<br>
-  <a href="mailto:h29449206@gmail.com">h29449206@gmail.com</a></p>
+<footer class="site-footer">
+  <nav class="site-footer__nav">
+    <a href="privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a>
+    <a href="support.html"><span lang="ja">サポート</span><span lang="en">Support</span></a>
+  </nav>
+  <div class="site-footer__copy">&copy; 2026 Akiko Miyatake</div>
+</footer>
 
-  <footer>&copy; 2026 Akiko Miyatake | <a href="index.html">BarePaper</a></footer>
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach(function (el) { observer.observe(el); });
+  })();
+
+  (function () {
+    var btn = document.querySelector('.hamburger');
+    var nav = document.querySelector('.site-nav');
+    if (!btn || !nav) return;
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      btn.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) {
+        nav.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+
+  (function () {
+    // 手動の言語切替（ページ遷移なし・選択はlocalStorageに保存）
+    window.__applyLang(document.documentElement.lang);
+    var toggle = document.getElementById('lang-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      var next = document.documentElement.lang === 'ja' ? 'en' : 'ja';
+      window.__applyLang(next);
+      try { localStorage.setItem('bp-lang', next); } catch (err) {}
+    });
+  })();
+</script>
+
 </body>
 </html>

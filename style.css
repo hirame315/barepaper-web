@@ -824,3 +824,24 @@ html[lang="en"] [lang="ja"] {
   color: var(--color-text-subtle);
   font-size: 0.85rem;
 }
+
+/* Legal pages (privacy policy) */
+
+.legal {
+  padding-top: 32px;
+}
+
+.legal__body p {
+  font-size: 0.95rem;
+  line-height: 2;
+  color: var(--color-text-muted);
+}
+
+.legal__body h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.12rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin: 48px 0 12px;
+}
