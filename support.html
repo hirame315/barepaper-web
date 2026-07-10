@@ -108,7 +108,7 @@
   <div class="container container--text">
     <h2 class="section-heading"><span lang="ja">お問い合わせ</span><span lang="en">Contact</span></h2>
     <p class="contact__body"><span lang="ja">上記で解決しない場合は、メールにてお気軽にどうぞ。</span><span lang="en">If your question isn't answered above, please email us.</span></p>
-    <a class="contact__mail" href="mailto:h29449206@gmail.com">h29449206@gmail.com</a>
+    <a class="contact__mail" id="contact-mail" href="#"></a>
     <p class="contact__note"><span lang="ja">通常2〜3営業日以内にご返答いたします。</span><span lang="en">We typically respond within 2–3 business days.</span></p>
   </div>
 </section>
@@ -168,6 +168,17 @@
       window.__applyLang(next);
       try { localStorage.setItem('bp-lang', next); } catch (err) {}
     });
+  })();
+
+  (function () {
+    // 収集ボット対策: メールアドレスはHTMLに直接書かず、JSで組み立てて表示する
+    var el = document.getElementById('contact-mail');
+    if (!el) return;
+    var u = 'h29449206';
+    var d = ['gmail', 'com'].join('.');
+    var addr = u + '@' + d;
+    el.setAttribute('href', 'mailto:' + addr);
+    el.textContent = addr;
   })();
 </script>
 
