@@ -881,15 +881,18 @@ html[lang="en"] [lang="ja"] {
 
 /* Blog — article body */
 
-.article-meta {
-  margin-top: 20px;
-  color: var(--color-text-subtle);
-  font-size: 0.85rem;
-  letter-spacing: 0.06em;
+.container--article {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.page-head--article {
+  text-align: left;
+  padding-bottom: 8px;
 }
 
 .article-body {
-  max-width: var(--max-text);
+  max-width: 1000px;
   margin: 0 auto;
   padding: 16px 24px 110px;
   font-size: 1rem;
@@ -902,8 +905,7 @@ html[lang="en"] [lang="ja"] {
 }
 
 .article-body h2 {
-  font-family: var(--font-serif);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.42rem;
   line-height: 1.6;
   letter-spacing: 0.02em;
@@ -914,8 +916,7 @@ html[lang="en"] [lang="ja"] {
 }
 
 .article-body h3 {
-  font-family: var(--font-serif);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.18rem;
   line-height: 1.6;
   margin: 2.4em 0 0.9em;
@@ -923,12 +924,11 @@ html[lang="en"] [lang="ja"] {
 }
 
 .article-body h4 {
-  font-family: var(--font-serif);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.02rem;
   line-height: 1.6;
   margin: 2em 0 0.7em;
-  color: var(--color-brand);
+  color: var(--color-text);
 }
 
 .article-body ul {
@@ -938,33 +938,6 @@ html[lang="en"] [lang="ja"] {
 
 .article-body li {
   margin: 0.35em 0;
-}
-
-.article-body .spec-list {
-  list-style: none;
-  padding: 0;
-  margin: 1.6em 0 2.2em;
-  border-top: 1px solid var(--color-border);
-}
-
-.article-body .spec-list li {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
-  margin: 0;
-  padding: 10px 6px;
-  border-bottom: 1px solid var(--color-border);
-  font-size: 0.92rem;
-}
-
-.article-body .spec-list li span:first-child {
-  color: var(--color-text-muted);
-  flex-shrink: 0;
-}
-
-.article-body .spec-list li span:last-child {
-  text-align: right;
 }
 
 .table-scroll {
@@ -991,7 +964,6 @@ html[lang="en"] [lang="ja"] {
 }
 
 .compare-table thead th {
-  font-family: var(--font-serif);
   font-weight: 600;
   white-space: nowrap;
   background: rgba(255, 255, 255, 0.66);
