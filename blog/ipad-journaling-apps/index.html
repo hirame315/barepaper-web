@@ -45,6 +45,40 @@
     "image": "https://barepaper.app/assets/ogp.png"
   }
   </script>
+  <script>
+    // 言語自動判定: URLの?lang= > 手動切替の保存値 > ブラウザ言語（ja系ならJP、それ以外はEN）
+    (function () {
+      var META = {
+        ja: {
+          title: 'iPadの手書きジャーナリング、どのアプリを選べばいい？ | BarePaper',
+          desc: '手書きジャーナリングに向いたiPadアプリの選び方を、無限キャンバス・エクスポート・タイマーの3つの機能と、価格・機能性・集中しやすさの3軸で整理。フリーボード・ジャーナル・GoodNotes・BarePaperを比較します。'
+        },
+        en: {
+          title: 'Handwritten journaling on iPad: which app should you choose? | BarePaper',
+          desc: 'How to choose an iPad app for handwritten journaling — infinite canvas, export, and a timer — comparing Freeform, Journal, GoodNotes, and BarePaper across price, features, and focus.'
+        }
+      };
+      window.__applyLang = function (lang) {
+        document.documentElement.lang = lang;
+        document.title = META[lang].title;
+        var md = document.querySelector('meta[name="description"]');
+        if (md) md.setAttribute('content', META[lang].desc);
+        var hb = document.querySelector('.hamburger');
+        if (hb) hb.setAttribute('aria-label', lang === 'ja' ? 'メニューを開く' : 'Open menu');
+      };
+      function pick() {
+        try {
+          var m = location.search.match(/[?&]lang=(ja|en)(&|$)/);
+          if (m) return m[1];
+          var saved = localStorage.getItem('bp-lang');
+          if (saved === 'ja' || saved === 'en') return saved;
+        } catch (e) {}
+        var nav = (navigator.language || (navigator.languages && navigator.languages[0]) || '');
+        return /^ja(-|$)/i.test(nav) ? 'ja' : 'en';
+      }
+      window.__applyLang(pick());
+    })();
+  </script>
 </head>
 <body>
 
@@ -58,10 +92,11 @@
       <span></span><span></span><span></span>
     </button>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/index.html#features">特徴</a>
-      <a href="/index.html#pricing">価格</a>
-      <a href="/blog/">ブログ</a>
-      <a href="/support.html">サポート</a>
+      <a href="/index.html#features"><span lang="ja">特徴</span><span lang="en">Features</span></a>
+      <a href="/index.html#pricing"><span lang="ja">価格</span><span lang="en">Pricing</span></a>
+      <a href="/blog/"><span lang="ja">ブログ</span><span lang="en">Blog</span></a>
+      <a href="/support.html"><span lang="ja">サポート</span><span lang="en">Support</span></a>
+      <a class="lang-switch" href="#" id="lang-toggle" role="button"><span lang="ja">English</span><span lang="en">日本語</span></a>
     </nav>
   </div>
 </header>
@@ -69,12 +104,14 @@
 <!-- [1] Article head -->
 <section class="page-head page-head--article">
   <div class="container container--article">
-    <h1 class="page-title">iPadの手書きジャーナリング、<br class="sp-only">どのアプリを選べばいい？</h1>
+    <h1 class="page-title"><span lang="ja">iPadの手書きジャーナリング、<br class="sp-only">どのアプリを選べばいい？</span><span lang="en">Handwritten journaling on iPad: which app should you choose?</span></h1>
   </div>
 </section>
 
 <!-- [2] Article body -->
 <article class="article-body">
+
+<div lang="ja">
 
   <p>iPadにはたくさんの手書きメモアプリがあります。<br>
   フリーボード、GoodNotes、Notability……。</p>
@@ -285,13 +322,227 @@
 
   <a class="article-back" href="/blog/">← ブログ一覧へ</a>
 
+</div>
+
+<div lang="en">
+
+  <p>There are a lot of handwriting apps for iPad.<br>
+  Freeform, GoodNotes, Notability…</p>
+
+  <p>With so many options, it's easy to get lost.<br>
+  Every app has its own strengths and ideal uses, so the best way to choose is to start from what you actually want to do.</p>
+
+  <p>This article focuses on handwritten journaling — writing out what's in your head to sort through it — and covers how to choose an app, along with recommendations.</p>
+
+  <h2>Features you'll want for handwritten journaling</h2>
+
+  <p>First, here are the features worth having if you journal by hand on an iPad.</p>
+
+  <h3>1. An infinite canvas</h3>
+
+  <p>Handwriting apps come in two types: notebook-style and infinite-canvas.</p>
+
+  <p>Notebook-style apps work like a paper notebook — easy to organize by page, but you can't write beyond the page. Your writing space is always limited.</p>
+
+  <p>Infinite-canvas apps, on the other hand, give you space that extends endlessly in every direction. You can keep writing with no constraints at all.</p>
+
+  <p>A limit on space is a limit on thinking.<br>
+  For journaling — where the whole point is pouring out and expanding what's in your head — infinite-canvas apps are by far the better fit.<br>
+  Once you've written without boundaries, it's hard to imagine going back.<br>
+  An infinite canvas is the one feature I'd call non-negotiable.</p>
+
+  <h3>2. Export</h3>
+
+  <p>What do you do with the journal pages you've built up day after day?<br>
+  Are they just sitting there, untouched?</p>
+
+  <p>If so, that's a huge waste.</p>
+
+  <p>Export your pages as PDFs and run them through OCR (text recognition), and your journaling history becomes an asset you can actually use.</p>
+
+  <p>Even better: convert past entries into a text file (Markdown, for example) and hand them to an AI. It can surface things you'd never notice on your own — patterns in your thinking, swings in your mood.</p>
+
+  <p>If you want journaling to be more than a one-time ritual — something that feeds your self-understanding and your output later — export is essential.</p>
+
+  <h3>3. A timer</h3>
+
+  <p>Ever get so absorbed in journaling that you look up and way too much time has passed?</p>
+
+  <p>That's where a timer helps. Decide on a time before you start writing, and you won't overrun it.<br>
+  And if you struggle to make journaling a habit, deciding "just five minutes" makes it much easier to start — and to keep going.</p>
+
+  <p>An external timer works too, so this isn't strictly required. But when the timer lives in the same app you write in, nothing pulls your attention away.</p>
+
+  <h2>Recommended iPad apps for handwritten journaling</h2>
+
+  <p>The right app depends on what you value. Here are recommendations along three axes: price, features, and focus.</p>
+
+  <h3>If price matters most: Freeform and Journal</h3>
+
+  <p>If you want free, Apple's own Freeform and Journal win.</p>
+
+  <h4>Freeform</h4>
+
+  <p>It comes preinstalled on iPad, so anyone can start right away, for free. It has an infinite canvas, and boards can be exported as PDFs.</p>
+
+  <p>That said, it isn't built for any particular purpose — it simply lets you write anywhere — so it falls short of paid apps on features.<br>
+  There's no timer, and honestly, the pen feel isn't great (that's subjective, of course, so try it yourself — it's free).</p>
+
+  <ul>
+    <li>Infinite canvas: ◯</li>
+    <li>Export: ◯</li>
+    <li>Timer: ×</li>
+    <li>Price: Free</li>
+  </ul>
+
+  <h4>Journal</h4>
+
+  <p>With iPadOS 26, Apple's Journal app came to iPad, with Apple Pencil handwriting support.<br>
+  It's a diary-style app where you add entries by date, though — not a canvas for spreading your thoughts out. The writing space only extends vertically.<br>
+  If you want to mix typed text with handwriting, or you like keeping records organized by date, Journal is worth considering.</p>
+
+  <ul>
+    <li>Infinite canvas: △ (vertical only)</li>
+    <li>Export: △ (bulk export of all entries)</li>
+    <li>Timer: ×</li>
+    <li>Price: Free</li>
+  </ul>
+
+  <h3>If features matter most: GoodNotes</h3>
+
+  <p>For sheer functionality, it's GoodNotes. It has been the go-to note-taking app for years, and it keeps gaining and refining features with every update — it's hard to find an app that beats it on functionality.</p>
+
+  <p>It started as a page-based notebook app, but an update added a Whiteboard document type, which gives you an infinite canvas too. There's even a built-in stopwatch/timer feature called Time Keeper.</p>
+
+  <p>There are three pricing options (as of this writing — check the App Store for the latest):</p>
+
+  <ul>
+    <li>Free version: limited to 3 notebooks, among other restrictions</li>
+    <li>Subscription: $11.99/year</li>
+    <li>One-time purchase: $28.99 (Apple devices only)</li>
+  </ul>
+
+  <p>If you want one app for everything — journaling, class notes, PDF markup, work memos — you can't go wrong with GoodNotes.</p>
+
+  <ul>
+    <li>Infinite canvas: ◯ (Whiteboard)</li>
+    <li>Export: ◯</li>
+    <li>Timer: ◯</li>
+    <li>Price: Free version / $11.99 per year or $28.99 one-time</li>
+  </ul>
+
+  <h3>If focus matters most: BarePaper</h3>
+
+  <p>GoodNotes is genuinely powerful and convenient. But all those features can get in the way — you find yourself fiddling with the app instead of writing.</p>
+
+  <p>You want to focus on journaling. You want nothing tugging at your attention — just you, writing.<br>
+  That's exactly what BarePaper was built for.</p>
+
+  <p>Open it, and there's almost nothing but paper — a UI stripped to the bare minimum.<br>
+  The tools are a simple pen, a marker, an eraser, and a lasso. No pressure sensitivity, no complexity — on purpose.<br>
+  There's no "which pen should I use?", no "how should I make this look?". It's a place designed for one thing: getting what's in your head onto the page.</p>
+
+  <p>And it still covers everything this article says journaling needs:</p>
+
+  <ul>
+    <li>Infinite canvas: no limits on your writing space</li>
+    <li>Paper-like feel: clean, even strokes on a paper-textured background (backgrounds are selectable)</li>
+    <li>Built-in timer: settable from 1 minute — perfect for the "just five minutes" habit</li>
+    <li>PDF export: save your canvases as records (Pro)</li>
+    <li>App lock: lock the app so no one else can read what you wrote</li>
+  </ul>
+
+  <p>It doesn't have GoodNotes-level breadth, so it's not for someone who wants one app for every use. But if you want a place to write, think, and face yourself, I think it will click.</p>
+
+  <ul>
+    <li>Infinite canvas: ◯</li>
+    <li>Export: ◯ (PDF, Pro only)</li>
+    <li>Timer: ◯</li>
+    <li>Price: Free version (one canvas) / Pro one-time purchase $17.99</li>
+  </ul>
+
+  <p>The download is free, and one full canvas is yours to use. No description can convey how writing actually feels — so write one page for free and see if it fits you.</p>
+
+  <h2>Summary</h2>
+
+  <div class="table-scroll">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Freeform</th>
+          <th>Journal</th>
+          <th>GoodNotes</th>
+          <th>BarePaper</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Infinite canvas</th>
+          <td>◯</td>
+          <td>△</td>
+          <td>◯</td>
+          <td>◯</td>
+        </tr>
+        <tr>
+          <th>Export</th>
+          <td>◯</td>
+          <td>△</td>
+          <td>◯</td>
+          <td>◯ (Pro)</td>
+        </tr>
+        <tr>
+          <th>Timer</th>
+          <td>×</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+        </tr>
+        <tr>
+          <th>Price</th>
+          <td>Free</td>
+          <td>Free</td>
+          <td>Free version / $11.99 per year / $28.99 one-time</td>
+          <td>Free version / $17.99 one-time (Pro)</td>
+        </tr>
+        <tr>
+          <th>Best for</th>
+          <td>Starting free</td>
+          <td>Date-based records</td>
+          <td>One app for everything</td>
+          <td>Focusing on writing</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ul>
+    <li>Just want to start free → Freeform</li>
+    <li>Want records organized by date → Journal</li>
+    <li>Want one app for many uses → GoodNotes</li>
+    <li>Want a place to focus on journaling → BarePaper</li>
+  </ul>
+
+  <p>Whatever you choose, I hope you find the app that fits your purpose — and a journaling practice you enjoy.</p>
+
+  <div class="article-cta">
+    <p>Curious about BarePaper? It's a free download on the App Store.</p>
+    <a class="cta-badge" href="https://apps.apple.com/app/barepaper/id6776892375">
+      <img src="/assets/appstore_badge_en.svg" alt="Download on the App Store" height="72">
+    </a>
+  </div>
+
+  <a class="article-back" href="/blog/">← All posts</a>
+
+</div>
+
 </article>
 
 <footer class="site-footer">
   <nav class="site-footer__nav">
-    <a href="/privacy.html">プライバシーポリシー</a>
-    <a href="/support.html">サポート</a>
-    <a href="/blog/">ブログ</a>
+    <a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a>
+    <a href="/support.html"><span lang="ja">サポート</span><span lang="en">Support</span></a>
+    <a href="/blog/"><span lang="ja">ブログ</span><span lang="en">Blog</span></a>
   </nav>
   <div class="site-footer__copy">&copy; 2026 Akiko Miyatake</div>
 </footer>
@@ -312,6 +563,19 @@
         btn.classList.remove('is-open');
         btn.setAttribute('aria-expanded', 'false');
       }
+    });
+  })();
+
+  (function () {
+    // 手動の言語切替（ページ遷移なし・選択はlocalStorageに保存）
+    window.__applyLang(document.documentElement.lang);
+    var toggle = document.getElementById('lang-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      var next = document.documentElement.lang === 'ja' ? 'en' : 'ja';
+      window.__applyLang(next);
+      try { localStorage.setItem('bp-lang', next); } catch (err) {}
     });
   })();
 </script>

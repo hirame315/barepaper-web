@@ -994,3 +994,9 @@ html[lang="en"] [lang="ja"] {
   margin-top: 3.6em;
   font-size: 0.9rem;
 }
+
+/* 英語本文は和文ほど行間を必要としないので少し詰める */
+
+html[lang="en"] .article-body {
+  line-height: 1.85;
+}
