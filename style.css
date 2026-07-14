@@ -892,7 +892,8 @@ html[lang="en"] [lang="ja"] {
 }
 
 .article-body {
-  max-width: 770px;
+  /* 本文770px + 左右パディング48px。タイトル側(.container--article、パディングは外側のsectionが持つ)と左端を揃える */
+  max-width: calc(770px + 48px);
   margin: 0 auto;
   padding: 16px 24px 110px;
   font-size: 1rem;
