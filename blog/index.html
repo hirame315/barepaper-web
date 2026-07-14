@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VF949LLM85"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VF949LLM85');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ブログ | BarePaper</title>
+  <meta name="description" content="BarePaper公式ブログ。iPadでの手書きジャーナリングや、書くことで考えるためのヒントを紹介します。">
+  <link rel="canonical" href="https://barepaper.app/blog/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ブログ | BarePaper">
+  <meta property="og:description" content="iPadでの手書きジャーナリングや、書くことで考えるためのヒントを紹介します。">
+  <meta property="og:url" content="https://barepaper.app/blog/">
+  <meta property="og:image" content="https://barepaper.app/assets/ogp.png">
+  <link rel="icon" type="image/png" href="/assets/icon_barepaper.png">
+  <link rel="apple-touch-icon" href="/assets/icon_barepaper.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <img class="brand__icon" src="/assets/icon_barepaper.png" alt="">
+      <span class="brand__name">BarePaper</span>
+    </a>
+    <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/index.html#features">特徴</a>
+      <a href="/index.html#pricing">価格</a>
+      <a href="/blog/">ブログ</a>
+      <a href="/support.html">サポート</a>
+    </nav>
+  </div>
+</header>
+
+<!-- [1] Page head -->
+<section class="page-head">
+  <div class="container container--text">
+    <svg class="hand-mark" viewBox="0 0 48 14" aria-hidden="true">
+      <path d="M3 9 C12 3, 20 3, 26 8 S40 12, 45 6" />
+    </svg>
+    <h1 class="page-title">ブログ</h1>
+    <p class="page-lead">iPadでの手書きジャーナリングや、<br class="sp-only">書くことで考えるためのヒントを紹介します。</p>
+  </div>
+</section>
+
+<!-- [2] Post list -->
+<section class="blog-list">
+  <div class="container container--narrow">
+    <div class="post-list">
+      <a class="post-item" href="/blog/ipad-journaling-apps/">
+        <p class="post-item__date"><time datetime="2026-07-14">2026年7月14日</time></p>
+        <h2 class="post-item__title">iPadの手書きジャーナリング、どのアプリを選べばいい？</h2>
+        <p class="post-item__excerpt">無限キャンバス・エクスポート・タイマーの3つの機能と、価格・機能性・集中しやすさの3軸で、手書きジャーナリング向きのiPadアプリを整理しました。</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <nav class="site-footer__nav">
+    <a href="/privacy.html">プライバシーポリシー</a>
+    <a href="/support.html">サポート</a>
+    <a href="/blog/">ブログ</a>
+  </nav>
+  <div class="site-footer__copy">&copy; 2026 Akiko Miyatake</div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.querySelector('.hamburger');
+    var nav = document.querySelector('.site-nav');
+    if (!btn || !nav) return;
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      btn.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) {
+        nav.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
