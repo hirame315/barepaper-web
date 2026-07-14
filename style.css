@@ -882,7 +882,7 @@ html[lang="en"] [lang="ja"] {
 /* Blog — article body */
 
 .container--article {
-  max-width: 1000px;
+  max-width: 770px;
   margin: 0 auto;
 }
 
@@ -892,7 +892,7 @@ html[lang="en"] [lang="ja"] {
 }
 
 .article-body {
-  max-width: 1000px;
+  max-width: 770px;
   margin: 0 auto;
   padding: 16px 24px 110px;
   font-size: 1rem;
