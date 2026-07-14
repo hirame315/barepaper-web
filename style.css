@@ -92,21 +92,13 @@ html.js [data-reveal].is-visible {
   transform: none;
 }
 
-/* Hand-drawn mark (equal-width stroke ornament) */
+/* Page mark (原石アイコン。旧・手書き風ストロークの置き換え 2026-07-14) */
 
-.hand-mark {
+.page-mark {
   display: block;
-  width: 48px;
-  height: 14px;
+  width: 36px;
+  height: auto;
   margin: 0 auto 40px;
-}
-
-.hand-mark path {
-  fill: none;
-  stroke: var(--color-brand);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  opacity: 0.65;
 }
 
 /* Header */
