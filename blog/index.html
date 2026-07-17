@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <!-- Google tag (gtag.js) -->
@@ -12,12 +12,12 @@
     gtag('config', 'G-VF949LLM85');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ブログ | BarePaper</title>
-  <meta name="description" content="BarePaper公式ブログ。iPadでの手書きジャーナリングや、書くことで考えるためのヒントを紹介します。">
+  <title>Blog | BarePaper</title>
+  <meta name="description" content="The official BarePaper blog — handwritten journaling on iPad and ideas for thinking through writing.">
   <link rel="canonical" href="https://barepaper.app/blog/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="ブログ | BarePaper">
-  <meta property="og:description" content="iPadでの手書きジャーナリングや、書くことで考えるためのヒントを紹介します。">
+  <meta property="og:title" content="Blog | BarePaper">
+  <meta property="og:description" content="Handwritten journaling on iPad, and ideas for thinking through writing.">
   <meta property="og:url" content="https://barepaper.app/blog/">
   <meta property="og:image" content="https://barepaper.app/assets/ogp.png">
   <link rel="icon" type="image/png" href="/assets/icon_barepaper.png">
@@ -26,34 +26,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
-  <script>
-    // 言語自動判定: URLの?lang= > 手動切替の保存値 > ブラウザ言語（ja系ならJP、それ以外はEN）
-    (function () {
-      var META = {
-        ja: { title: 'ブログ | BarePaper', desc: 'BarePaper公式ブログ。iPadでの手書きジャーナリングや、書くことで考えるためのヒントを紹介します。' },
-        en: { title: 'Blog | BarePaper', desc: 'The official BarePaper blog — handwritten journaling on iPad and ideas for thinking through writing.' }
-      };
-      window.__applyLang = function (lang) {
-        document.documentElement.lang = lang;
-        document.title = META[lang].title;
-        var md = document.querySelector('meta[name="description"]');
-        if (md) md.setAttribute('content', META[lang].desc);
-        var hb = document.querySelector('.hamburger');
-        if (hb) hb.setAttribute('aria-label', lang === 'ja' ? 'メニューを開く' : 'Open menu');
-      };
-      function pick() {
-        try {
-          var m = location.search.match(/[?&]lang=(ja|en)(&|$)/);
-          if (m) return m[1];
-          var saved = localStorage.getItem('bp-lang');
-          if (saved === 'ja' || saved === 'en') return saved;
-        } catch (e) {}
-        var nav = (navigator.language || (navigator.languages && navigator.languages[0]) || '');
-        return /^ja(-|$)/i.test(nav) ? 'ja' : 'en';
-      }
-      window.__applyLang(pick());
-    })();
-  </script>
 </head>
 <body>
 
@@ -63,15 +35,14 @@
       <img class="brand__icon" src="/assets/icon_barepaper.png" alt="">
       <span class="brand__name">BarePaper</span>
     </a>
-    <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/index.html#features"><span lang="ja">特徴</span><span lang="en">Features</span></a>
-      <a href="/index.html#pricing"><span lang="ja">価格</span><span lang="en">Pricing</span></a>
-      <a href="https://note.com/barepaper" target="_blank" rel="noopener" lang="ja">note</a><a href="/blog/" lang="en">Blog</a>
-      <a href="/support.html"><span lang="ja">サポート</span><span lang="en">Support</span></a>
-      <a class="lang-switch" href="#" id="lang-toggle" role="button"><span lang="ja">English</span><span lang="en">日本語</span></a>
+      <a href="/index.html#features">Features</a>
+      <a href="/index.html#pricing">Pricing</a>
+      <a href="/blog/">Blog</a>
+      <a href="/support.html">Support</a>
     </nav>
   </div>
 </header>
@@ -80,8 +51,8 @@
 <section class="page-head">
   <div class="container container--text">
     <img class="page-mark" src="/assets/gem_icon.png" alt="">
-    <h1 class="page-title"><span lang="ja">ブログ</span><span lang="en">Blog</span></h1>
-    <p class="page-lead"><span lang="ja">iPadでの手書きジャーナリングや、<br class="sp-only">書くことで考えるためのヒントを紹介します。</span><span lang="en">Handwritten journaling on iPad, and ideas for thinking through writing.</span></p>
+    <h1 class="page-title">Blog</h1>
+    <p class="page-lead">Handwritten journaling on iPad, and ideas for thinking through writing.</p>
   </div>
 </section>
 
@@ -89,9 +60,7 @@
 <section class="blog-list">
   <div class="container container--narrow">
     <div class="post-list">
-      <!-- 日本語記事はnoteに移行（2026-07-17）。英語記事のみここに置く -->
-      <p class="page-lead" lang="ja">日本語の記事は<a href="https://note.com/barepaper" target="_blank" rel="noopener">note</a>で公開しています。</p>
-      <a class="post-item" href="/blog/en/ipad-journaling-apps/" lang="en">
+      <a class="post-item" href="/blog/en/ipad-journaling-apps/">
         <p class="post-item__date"><time datetime="2026-07-14">July 14, 2026</time></p>
         <h2 class="post-item__title">Handwritten journaling on iPad: which app should you choose?</h2>
         <p class="post-item__excerpt">Comparing iPad apps for handwritten journaling — infinite canvas, export, and a timer — across price, features, and focus.</p>
@@ -102,9 +71,9 @@
 
 <footer class="site-footer">
   <nav class="site-footer__nav">
-    <a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a>
-    <a href="/support.html"><span lang="ja">サポート</span><span lang="en">Support</span></a>
-    <a href="https://note.com/barepaper" target="_blank" rel="noopener" lang="ja">note</a><a href="/blog/" lang="en">Blog</a>
+    <a href="/privacy.html">Privacy Policy</a>
+    <a href="/support.html">Support</a>
+    <a href="/blog/">Blog</a>
   </nav>
   <div class="site-footer__copy">&copy; 2026 Akiko Miyatake</div>
 </footer>
@@ -125,19 +94,6 @@
         btn.classList.remove('is-open');
         btn.setAttribute('aria-expanded', 'false');
       }
-    });
-  })();
-
-  (function () {
-    // 手動の言語切替（ページ遷移なし・選択はlocalStorageに保存）
-    window.__applyLang(document.documentElement.lang);
-    var toggle = document.getElementById('lang-toggle');
-    if (!toggle) return;
-    toggle.addEventListener('click', function (e) {
-      e.preventDefault();
-      var next = document.documentElement.lang === 'ja' ? 'en' : 'ja';
-      window.__applyLang(next);
-      try { localStorage.setItem('bp-lang', next); } catch (err) {}
     });
   })();
 </script>
